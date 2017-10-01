@@ -52,13 +52,13 @@ public class ConnectionManager extends HttpServlet  {
 			
 			String postpass = System.getenv("DATABASE_SERVICE_HOST");
 			
-			String postdata = System.getenv("DATABASE_PASSWORD");
+			String postdata = System.getenv("${APPLICATION_NAME}");
 			
 			System.out.println("postuser-"+postuser);
 			
 			System.out.println("postpass --"+postpass);
 			
-			System.out.println("postdata"+postdata);
+			System.out.println("postdata--"+postdata);
 
 		  //  Context initialContext = new InitialContext();
 		 //   DataSource datasource = (DataSource)initialContext.lookup("java:jboss/datasources/PostgreSQLDS");
