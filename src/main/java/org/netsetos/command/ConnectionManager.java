@@ -48,21 +48,21 @@ public class ConnectionManager extends HttpServlet  {
 			String emailpassword  = "fromemail";
 			System.out.println("email is "+email);
 			
-			String postuser = System.getenv("database-user");
+			String postuser = System.getenv("POSTGRESQL_USER");
 			
-			String postpass = System.getenv("DATABASE_PASSWORD");
+			String postpass = System.getenv("DATABASE_SERVICE_HOST");
 			
 			String postdata = System.getenv("DATABASE_PASSWORD");
 			
 			System.out.println("postuser-"+postuser);
 			
-			System.out.println("postpass"+postpass);
+			System.out.println("postpass --"+postpass);
 			
 			System.out.println("postdata"+postdata);
 
 		  //  Context initialContext = new InitialContext();
 		 //   DataSource datasource = (DataSource)initialContext.lookup("java:jboss/datasources/PostgreSQLDS");
-		//    result = datasource.getConnection();
+		   // result = datasource.getConnection();
 			//response.sendRedirect("EnvSetup.jsp");
 			    
 		} catch (Exception ex) {
