@@ -56,9 +56,9 @@ public class ConnectionManager extends HttpServlet  {
 			
 		//	String postapp = System.getenv("APPLICATION_NAME");
 			
-			System.out.println("postuser-"+postuser);
+			System.out.println("posdtuser-"+postuser);
 			
-			System.out.println("postpass --"+postpass);
+			System.out.println("posdtpass --"+postpass);
 			
 			System.out.println("postdata-App-");
 			
