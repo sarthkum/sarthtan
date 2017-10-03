@@ -54,7 +54,7 @@ public class ConnectionManager extends HttpServlet  {
 			
 			String postdata = System.getenv("${APPLICATION_NAME}");
 			
-			String postapp = System.getenv("APPLICATION_NAME");
+		//	String postapp = System.getenv("APPLICATION_NAME");
 			
 			System.out.println("postuser-"+postuser);
 			
@@ -62,7 +62,7 @@ public class ConnectionManager extends HttpServlet  {
 			
 			System.out.println("postdata-App-"+postdata);
 			
-			System.out.println("postdata-App-"+postapp);
+	//		System.out.println("postdata-App-"+postapp);
 
 		  //  Context initialContext = new InitialContext();
 		 //   DataSource datasource = (DataSource)initialContext.lookup("java:jboss/datasources/PostgreSQLDS");
