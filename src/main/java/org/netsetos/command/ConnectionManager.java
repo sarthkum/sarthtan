@@ -52,7 +52,7 @@ public class ConnectionManager extends HttpServlet  {
 			
 			String postpass = System.getenv("DATABASE_SERVICE_HOST");
 			
-			String postdata = System.getenv("${APPLICATION_NAME}");
+		//	String postdata = System.getenv("${APPLICATION_NAME}");
 			
 		//	String postapp = System.getenv("APPLICATION_NAME");
 			
@@ -60,7 +60,7 @@ public class ConnectionManager extends HttpServlet  {
 			
 			System.out.println("postpass --"+postpass);
 			
-			System.out.println("postdata-App-"+postdata);
+		//	System.out.println("postdata-App-"+postdata);
 			
 	//		System.out.println("postdata-App-"+postapp);
 
