@@ -48,7 +48,7 @@ public class ConnectionManager extends HttpServlet  {
 			String emailpassword  = "fromemail";
 			System.out.println("email is "+email);
 			
-			String postuser = System.getenv("POSTGRESQL_USER");
+			String postuser = System.getenv("${POSTGRESQL_USER}");
 			
 			String postpass = System.getenv("DATABASE_SERVICE_HOST");
 			
