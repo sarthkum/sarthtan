@@ -50,7 +50,13 @@ public class ConnectionManager extends HttpServlet  {
 			
 			String postuser = System.getenv("POSTGRESQL_USER");
 			
-			String postpass = System.getenv("POSTGRESQL_DATABASE");
+			String postdatabase = System.getenv("POSTGRESQL_DATABASE");
+			
+			String postpass = System.getenv("POSTGRESQL_PASSWORD");
+			
+			String postservicehost = System.getenv("POSTGRESQL_SERVICE_HOST");
+			
+			//postgresql://$OPENSHIFT_POSTGRESQL_DB_HOST:$OPENSHIFT_POSTGRESQL_DB_PORT
 			
 			//String postdata = System.getenv("${APPLICATION_NAME}");
 			
@@ -60,9 +66,9 @@ public class ConnectionManager extends HttpServlet  {
 			
 			System.out.println("posdtpass --"+postpass);
 			
-			System.out.println("postdata-App-");
+			System.out.println("postdata-databse-"+postdatabase);
 			
-			System.out.println("postdata-App-");
+			System.out.println("postdata-App-"+postservicehost);
 
 		//   Context initialContext = new InitialContext();
 	//	    DataSource datasource = (DataSource)initialContext.lookup("java:jboss/datasources/PostgreSQLDS");
