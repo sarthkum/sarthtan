@@ -42,11 +42,11 @@ public class ConnectionManager extends HttpServlet  {
 		Statement stmte = null; 
 		try {
 			// Grab the variables from the form.
-			String username = request.getParameter("username");
-			String password = request.getParameter("password");
-			String email = request.getParameter("email") ;
-			String emailpassword  = "fromemail";
-			System.out.println("email is "+email);
+//			String username = request.getParameter("username");
+//			String password = request.getParameter("password");
+//			String email = request.getParameter("email") ;
+//			String emailpassword  = "fromemail";
+//			System.out.println("email is "+email);
 			
 			String postuser = System.getenv("POSTGRESQL_USER");
 			
@@ -75,11 +75,29 @@ public class ConnectionManager extends HttpServlet  {
 			System.out.println("postdata-host-"+postservicehost);
 			
 			System.out.println("postdata-port-"+postserviceport);
+			
+			String databaseURL = "jdbc:postgresql://";
+			   databaseURL += System.getenv("POSTGRESQL_SERVICE_HOST");
+			   databaseURL += "/" + System.getenv("POSTGRESQL_DATABASE");
+
+			   String username = System.getenv("POSTGRESQL_USER");
+			   String password = System.getenv("PGPASSWORD");
+			   Connection connection = DriverManager.getConnection(databaseURL, username,
+			   password);
 
 		//   Context initialContext = new InitialContext();
 	//	    DataSource datasource = (DataSource)initialContext.lookup("java:jboss/datasources/PostgreSQLDS");
 	//	    result = datasource.getConnection();
 		//	response.sendRedirect("EnvSetup.jsp");
+			   
+			   if(connection != null )
+			   {
+				   System.out.println("connection "+connection);
+				   
+			   }
+			   else {
+				   System.out.println("else conn ");
+			   }
 			    
 		} catch (Exception ex) {
 			response.sendRedirect("EnvSetup.jsp");
