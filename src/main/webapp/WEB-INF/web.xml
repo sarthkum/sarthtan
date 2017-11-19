@@ -18,4 +18,12 @@
     <servlet-name>ConnectionManager</servlet-name>
     <url-pattern>/ConnectionManager</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>UpdateNsoAll</servlet-name>
+    <servlet-class>org.netsetos.command.UpdateNsoAll</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateNsoAll</servlet-name>
+    <url-pattern>/UpdateNsoAll</url-pattern>
+  </servlet-mapping>
 </web-app>
