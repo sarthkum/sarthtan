@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import javax.servlet.http.*; 
+import javax.servlet.http.*;
 import javax.sql.*;
 import javax.naming.*;
 import javax.servlet.ServletContext;
@@ -20,97 +20,58 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
-//import com.google.api.client.json.JsonFactory;
-////import com.google.api.client.json.jackson2.JacksonFactory;
-//import com.google.api.services.translate.Translate;
-//import com.google.api.services.translate.Translate.Translations;
-//import com.google.api.services.translate.model.TranslationsListResponse;
-//import com.google.api.services.translate.model.TranslationsResource;
+public class ConnectionManager extends HttpServlet {
 
-public class ConnectionManager extends HttpServlet  {
-	
 	private static final long serialVersionUID = 1L;
-	 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
 
-		Connection result = null;
-		HttpSession session=request.getSession();
-		ResultSet rs=null;
-		ResultSet rsemail=null;  
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		Connection connection = null;
 		Statement stmt = null;
-		Statement stmte = null; 
+		ResultSet rs = null;
+
 		try {
-			// Grab the variables from the form.
-//			String username = request.getParameter("username");
-//			String password = request.getParameter("password");
-//			String email = request.getParameter("email") ;
-//			String emailpassword  = "fromemail";
-//			System.out.println("email is "+email);
-			
-			String postuser = System.getenv("POSTGRESQL_USER");
-			
-			String postdatabase = System.getenv("POSTGRESQL_DATABASE");
-			
-			String postpass = System.getenv("PGPASSWORD");
-			
-			String postservicehost = System.getenv("POSTGRESQL_SERVICE_HOST");
-			
-			String postserviceport = System.getenv("POSTGRESQL_SERVICE_PORT");
-			
-			//postgresql://$OPENSHIFT_POSTGRESQL_DB_HOST:$OPENSHIFT_POSTGRESQL_DB_PORT
-			
-			//String postdata = System.getenv("${APPLICATION_NAME}");
-			
-		//	String postapp = System.getenv("APPLICATION_NAME");
-			
-			String jdbcpostgresString = "postgresql://$OPENSHIFT_POSTGRESQL_DB_HOST:$OPENSHIFT_POSTGRESQL_DB_PORT";
-			
-			System.out.println("posdtuser-"+postuser);
-			
-			System.out.println("posdtpass --"+postpass);
-			
-			System.out.println("postdata-databse-"+postdatabase);
-			
-			System.out.println("postdata-host-"+postservicehost);
-			
-			System.out.println("postdata-port-"+postserviceport);
-			
 			String databaseURL = "jdbc:postgresql://";
-			   databaseURL += System.getenv("POSTGRESQL_SERVICE_HOST");
-			   databaseURL += "/" + System.getenv("POSTGRESQL_DATABASE");
+			databaseURL += System.getenv("POSTGRESQL_SERVICE_HOST");
+			databaseURL += "/" + System.getenv("POSTGRESQL_DATABASE");
 
-			   String username = System.getenv("POSTGRESQL_USER");
-			   String password = System.getenv("PGPASSWORD");
-			   Connection connection = DriverManager.getConnection(databaseURL, username,
-			   password);
+			String username = System.getenv("POSTGRESQL_USER");
+			String password = System.getenv("PGPASSWORD");
+			connection = DriverManager.getConnection(databaseURL, username, password);
 
-		//   Context initialContext = new InitialContext();
-	//	    DataSource datasource = (DataSource)initialContext.lookup("java:jboss/datasources/PostgreSQLDS");
-	//	    result = datasource.getConnection();
-		//	response.sendRedirect("EnvSetup.jsp");
-			   
-			   if(connection != null )
-			   {
-				   System.out.println("connection "+connection);
-				   
-			   }
-			   else {
-				   System.out.println("else conn ");
-			   }
-			    
+			if (connection != null) {
+				System.out.println("connection " + connection);
+
+			} else {
+				System.out.println("else conn ");
+			}
+
 		} catch (Exception ex) {
 			response.sendRedirect("EnvSetup.jsp");
 			ex.printStackTrace();
-		    System.out.println("Exception:  " + ex + ex.getMessage());
+			System.out.println("Exception:  " + ex + ex.getMessage());
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+			} catch (Exception e) {
+			}
+			;
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (Exception e) {
+			}
+			;
+			try {
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+			}
+			;
 		}
-		finally{
-		    try { if (rs != null) rs.close(); } catch (Exception e) {};
-		    try { if (stmt != null) stmt.close(); } catch (Exception e) {};
-		    try { if (result != null) result.close(); } catch (Exception e) {};
-	}
 
-		
 	}
 
 }
