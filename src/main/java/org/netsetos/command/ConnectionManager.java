@@ -43,13 +43,13 @@ public class ConnectionManager  extends HttpServlet {
 			try {
 				connection = DriverManager.getConnection(databaseURL, username, password);
 			} catch (SQLException e) {
-				try { if (connection != null) connection.close(); } catch (Exception e) {};
+				try { if (connection != null) connection.close(); } catch (Exception e1) {};
 				e.printStackTrace();
 			}
 			return connection;
         }
 	 
-		protected void doGet(HttpServletRequest request,
+		protected void doGet(HttpServletRequest request, 
 				HttpServletResponse response) throws ServletException, IOException {
 
 			Connection result = null;
