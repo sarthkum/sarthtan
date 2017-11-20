@@ -3,7 +3,9 @@ package org.netsetos.command;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 
@@ -19,6 +21,23 @@ import javax.sql.DataSource;
 public class UpdateNsoAll extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	
+	  public Connection getConnection() {
+      	Connection connection = null;
+			String databaseURL = "jdbc:postgresql://";
+			databaseURL += System.getenv("POSTGRESQL_SERVICE_HOST");
+			databaseURL += "/" + System.getenv("POSTGRESQL_DATABASE");
+
+			String username = System.getenv("POSTGRESQL_USER");
+			String password = System.getenv("PGPASSWORD");
+			try {
+				connection = DriverManager.getConnection(databaseURL, username, password);
+			} catch (SQLException e) {
+				System.out.println("Exception:  " + e + e.getMessage());
+				e.printStackTrace();
+			}
+			return connection;
+      }
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -28,10 +47,10 @@ public class UpdateNsoAll extends HttpServlet {
 
 		try {
 
-			Context initialContext = new InitialContext();
-			DataSource datasource = (DataSource) initialContext
-					.lookup("java:jboss/datasources/PostgreSQLDS");
-			result = datasource.getConnection();
+//			Context initialContext = new InitialContext();
+//			DataSource datasource = (DataSource) initialContext
+//					.lookup("java:jboss/datasources/PostgreSQLDS");
+			result = getConnection();
 			Statement stmt = result.createStatement();
 			
 

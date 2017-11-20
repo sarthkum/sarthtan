@@ -26,4 +26,13 @@
     <servlet-name>UpdateNsoAll</servlet-name>
     <url-pattern>/UpdateNsoAll</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>UpdateDB</servlet-name>
+    <servlet-class>org.netsetos.command.UpdateDB</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateDB</servlet-name>
+    <url-pattern>/UpdateDB</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

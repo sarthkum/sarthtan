@@ -43,7 +43,7 @@ public class ConnectionManager  extends HttpServlet {
 			try {
 				connection = DriverManager.getConnection(databaseURL, username, password);
 			} catch (SQLException e) {
-				try { if (connection != null) connection.close(); } catch (Exception e1) {};
+				System.out.println("Exception:  " + e + e.getMessage());
 				e.printStackTrace();
 			}
 			return connection;
