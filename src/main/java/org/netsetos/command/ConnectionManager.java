@@ -65,6 +65,8 @@ public class ConnectionManager  extends HttpServlet {
 				String email = request.getParameter("email") ;
 				String emailpassword  = "fromemail";
 				System.out.println("email is "+email);
+				System.out.println("username"+username);
+				System.out.println("password"+password);
 
 			  //  Context initialContext = new InitialContext();
 			 //   DataSource datasource = (DataSource)initialContext.lookup("java:jboss/datasources/PostgreSQLDS");
@@ -83,7 +85,7 @@ public class ConnectionManager  extends HttpServlet {
 			     rsemail = stmte.executeQuery(queryforemail);   
 			    
 	if (email == null) {  
-			     
+		System.out.println("email is  rs "+email);
 			    if (rs.next()) {
 			    	System.out.println("email is  rs "+email);
 			    	String checkUsername = rs.getString(2);
