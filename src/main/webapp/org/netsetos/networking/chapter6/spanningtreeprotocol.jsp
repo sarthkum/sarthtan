@@ -40,58 +40,32 @@
 <td>
 <div id="post">
 <h3>cHAPTER 6 sPANNING tREE pROTOCOL</h3>
-<p>Library sources are delivered in JDK as compressed file src.zip , Un zip files for accessing the content </p> 
+<p>Before studying Spanning tree protocol we need to have some information about Redundant Topology .</p>
+<p><b>Redundant Topology</b></p>
 
 <ol> 
 
-<li> Make sure the JDK is installed and jdk/bin  is set on executable path  </li> 
-
-<li>Make directory where you can unzip the src.zip</li> 
-
-<li>Locate src.zip in the jdk folder</li> 
-
-<li>unzip the src.zip file in folder of your choice like javasrc in terminal window you can execute command </li> 
+<li>To eliminate single point of failure backup links are used.</li>
+<li>This type of Network is called as redundant network.</li>
+ 
 
 </ol> 
 
+ <p> Problems faced in Redundant Topology :-</p>
  
+ <ol> 
+ <li>Multiple frame copies</li>
+ <li>Mac address table instability.</li>
+ <li>Broadcast Storms. </li>
+</ol>
 
-<pre>cd javasrc 
+ <img src="img/netimg1.png"> 
 
-jar xvf  jdk/src.zip [whole path to zip file /sarthak/java/jdk1.8.0/src.zip] 
+<p>To overcome these problems which are known as Layer 2 switching loops were overcome by  STP(Spanning Tree protocol).</p>
 
-</pre> 
 
- 
+<p>Now we will study about what is Spanning Tree Protocol.</p>
 
-<p>The zip contain the public libraries but if you are interested in JVM and compiler libraries also go to </p> 
-
-<a href="http://jdk8.java.net."> Java </a> 
-
- 
-
-<p>There are documentation provided by java also which could be downloaded from <\p>  
-
-<a href="www.oracle.com/technetwork/java/javase/downloads" > java documentation </a>   
-
-  
-
-<ol> 
-
-<li> Download the documentation zip file. It is called jdk-version-docs-all.zip, where version is something like 8u31.</li> 
-
-<li> Unzip the file and rename the doc directory into something more descriptive, like javadoc. If you like, you can do this from the command line:</li> 
-
-</ol> 
-
-<pre> 
-
-jar xvf Downloads/jdk-version-docs-all.zip 
-mv doc javadoc 
-
-where version is the appropriate version number. 
-
-</pre>
 <jsp:include page="../status_change.jsp" />
 </div>
 </td>
