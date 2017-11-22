@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII" pageEncoding="US-ASCII"%>
 <%@ page import='java.sql.*' %>
-<%@ page import='javax.sql.*' %>
+<%@ page import='javax.sql.*'  %>
 
 <div id="header">
 <h3>nETSETOS</h3>
