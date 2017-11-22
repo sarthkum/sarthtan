@@ -66,6 +66,30 @@
 
 <p>Now we will study about what is Spanning Tree Protocol.</p>
 
+<p>Spanning Tree Protocol</p>
+
+<p>Spanning-Tree Protocol (STP) prevents loops from being formed when switches or bridges are interconnected via multiple paths.
+</p>
+
+<p>Spanning-Tree Protocol implements the 802.1D IEEE algorithm by exchanging BPDU(Bridge Protocol data unit) messages with other switches to detect loops and 
+then removes the loop by shutting down selected bridge interfaces</p>
+
+<p> It uses Spanning-Tree algorithm.</p>
+
+<p> It blocks redundant paths that could cause a loop.</p>
+
+
+<img src="img/imgnet2.png"> 
+
+<p>By making one link down   We can avoid the loops..</p>
+
+<p>STP Terminology </p>
+
+<p><b>Root Switch </b></p>
+
+<p>The switch with best (lowest ) Switch ID.
+-Out of all the switches in the network, one switch is elected as Root switch.This Root switch becomes the focul point of the network.</p>
+
 <jsp:include page="../status_change.jsp" />
 </div>
 </td>
