@@ -37,6 +37,165 @@
 <td>
 <div id="post">
 <h3>cHAPTER 2 lIVENESS  AND  pERFORMANCE</h3>
+<p>In UnsafeCachingFactorizer, we introduce some caching into our factoring servlet in the hope of improving our performance. Caching required some shared state, which in turn required synchronization to maintain the integrity of that state. But The way we used synchronization in Facorizer will make it perform badly.</p> 
+
+ 
+
+<p>In the approach we are synchronizing the whole method with the servlet intrinsic lock.</p> 
+
+ 
+
+<p>Because service is synchronized so only one thread may execute it at once. This subvert the intended use of the servlet that servlet are able to handle multiple request at a time . If the number enough to be factored than other user have to wait for the thread until lock is released .</p> 
+
+ 
+
+ 
+
+<p>For this purpose we have to reduce the scope of the synchronization</p> 
+
+ 
+
+ 
+
+<pre> 
+
+package jc.multi.chap2; 
+
+  
+
+import java.math.BigInteger; 
+
+  
+
+  
+
+public class CachedFactorizer{ 
+
+     
+
+    private BigInteger lastNumber ; 
+
+    private  BigInteger [] lastFactors ; 
+
+    private long hits; 
+
+    private long cacheHits; 
+
+    private BigInteger[] factors; 
+
+     
+
+    public synchronized long getHits() { 
+
+        return hits; 
+
+    } 
+
+     
+
+    public synchronized double getCachedHitRatio() { 
+
+        return (double)cacheHits / (double)hits; 
+
+    } 
+
+     
+
+    public void service(String req,String resp) { 
+
+        BigInteger i = extractFromRequest(req); 
+
+         
+
+        synchronized(this) { 
+
+            if(i.equals(lastNumber)) { 
+
+                ++cacheHits; 
+
+                factors = lastFactors.clone(); 
+
+                 
+
+            } 
+
+        } 
+
+         
+
+        if(factors == null) { 
+
+            factors = factor(i); 
+
+            synchronized(this) { 
+
+                lastNumber = i; 
+
+                lastFactors = factors.clone(); 
+
+            } 
+
+        } 
+
+         
+
+         
+
+        encodeIntoResponse(resp,factors); 
+
+         
+
+     
+
+    } 
+
+  
+
+    private BigInteger[] factor(BigInteger i) { 
+
+        // TODO Auto-generated method stub 
+
+        return null; 
+
+    } 
+
+  
+
+    private void encodeIntoResponse(String resp, BigInteger[] bigIntegers) { 
+
+        // TODO Auto-generated method stub 
+
+         
+
+    } 
+
+  
+
+    private BigInteger extractFromRequest(String req) { 
+
+        // TODO Auto-generated method stub 
+
+        return null; 
+
+    } 
+
+     
+
+  
+
+} 
+
+</pre> 
+
+ 
+
+ 
+
+<p>Here we have restructured the servlet to use two separate to use two separate synchronized block, each limited to a small section</p> 
+
+ 
+
+<p>One guards the check than act and another guards the updating of factors and lastfactors . As a bonus we have added the hit counter and added a "cache hit" counter and updating them within the initial synchronized block.BECAUSE THESE connter shared mutable state as well, we must use synchronizaton everywhere they are accessed.</p> 
 <jsp:include page="../status_change.jsp" />
 </div>
 </td>
