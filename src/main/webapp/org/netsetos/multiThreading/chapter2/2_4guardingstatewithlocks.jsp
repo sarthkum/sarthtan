@@ -37,6 +37,53 @@
 <td>
 <div id="post">
 <h3>cHAPTER 2 gUARDING  sTATE  WITH  lOCKS</h3>
+<p>Just wrapping compound action with a synchronized block is not sufficient; if synchronization is used to coordinate access to a variable , it is needed everywhere that variable is accessed.</p> 
+
+ 
+
+<p>For all mutable state variable that may be accessed by more than one thread, all accesses to that variable must be performed with the same lock held. In this case, we say that the variable is guarded by that lock.</p> 
+
+ 
+
+<p>Every shared, mutable variable should be guarded by exactly one lock. Make it clear to maintainers which lock that is.</p> 
+
+ 
+
+<p>A common locking convention is to encapsulate all mutable state within an object and to protect it from concurrent access by synchronizing any code path that access mutable state using the object intrinsic lock like Vector class. </p>   
+
+ 
+
+<p>Like TimerTask is a class in java that runs scheduling on its own thread. Suppose you have a downloading program and you want to add snapshot for the progress made in the program so that it can be saved in a file.</p> 
+
+ 
+
+<p>So now your SnapShot program must be thread safe as the data or the mutable state will be accessed by two threads so not only the TimerTask code uses synchronization but also the code that is accessing the data in the main program</p> 
+
+ 
+
+<p>For every invariant that involves more than one variable, all the variables involved  in that invariant must be guarded by the same lock.</p> 
+
+ 
+
+<p>So why not make every method as synchronized to avoid the race condition. This might not be the solution . </p> 
+
+ 
+
+<pre> 
+
+If(!vector.contains(element)) 
+
+   vector.add(element) 
+
+</pre> 
+
+ 
+
+<p>The above code has a race condition as they both individually are atomic operation.Syncronization can make individual operations atomic, additional locking is required when mutiple operations are combined in a compound statement </p> 
+
+ 
+
+<p>As you have seen in the previous code making every code syncronized will lead to performance and liveness problem.</p> 
 <jsp:include page="../status_change.jsp" />
 </div>
 </td>
