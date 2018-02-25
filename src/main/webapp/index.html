@@ -157,7 +157,9 @@ var mapOptions = {
     zoom: 10,
     mapTypeId: google.maps.MapTypeId.HYBRID
 }
+
 var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  map.setTilt(45);
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBftxNrNWPY3wT4qMhpuJVy_OhJodQIC7g&callback=myMap"></script>
