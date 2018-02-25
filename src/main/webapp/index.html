@@ -176,6 +176,16 @@ function initMap() {
   });
 }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBftxNrNWPY3wT4qMhpuJVy_OhJodQIC7g&libraries=places&callback=initMap"></script>
+  <script>
+function myMap() {
+var mapOptions = {
+    center: new google.maps.LatLng(27.901285, 78.094503),
+    zoom: 10,
+    mapTypeId: google.maps.MapTypeId.HYBRID
+}
+var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBftxNrNWPY3wT4qMhpuJVy_OhJodQIC7g&callback=myMap"></script>
 </body>
 </html>
