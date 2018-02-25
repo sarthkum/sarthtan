@@ -5,6 +5,10 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
+* element that contains the map. */
+#map {
+  height: 100%;
+}
 .mySlides {display:none;
     max-width: 100%;}    
 body,h1,h2{font-family: "Raleway", sans-serif}
@@ -120,7 +124,7 @@ p {line-height: 2}
   </div>
 </div>
 
-<div id="map" style="width:400px;height:400px;background:yellow"></div>
+<div id="map"></div>
 
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-16">
@@ -145,15 +149,33 @@ function carousel() {
 }
 </script>   
 <script>
-function myMap() {
-var mapOptions = {
-    center: new google.maps.LatLng(27.902192, 78.093343),
-    zoom: 10,
-    mapTypeId: google.maps.MapTypeId.HYBRID
-}
-var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -33.866, lng: 151.196},
+    zoom: 15
+  });
+
+  var infowindow = new google.maps.InfoWindow();
+  var service = new google.maps.places.PlacesService(map);
+
+  service.getDetails({
+    placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
+  }, function(place, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+      });
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+          'Place ID: ' + place.place_id + '<br>' +
+          place.formatted_address + '</div>');
+        infowindow.open(map, this);
+      });
+    }
+  });
 }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBftxNrNWPY3wT4qMhpuJVy_OhJodQIC7g&callback=myMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBftxNrNWPY3wT4qMhpuJVy_OhJodQIC7g&callback=initMap"></script>
 </body>
 </html>
