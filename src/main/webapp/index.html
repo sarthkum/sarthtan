@@ -1,36 +1,30 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <title>Place details</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      .mySlides {display:none;
-                 max-width: 100%;
-      }
-      p {line-height: 2}
-     .bgimg, .bgimg2 {
-       min-height: 100%;
-       background-position: center;
-       background-size: cover;
-       max-width: 100%;
-    }
+<head>
+<title>WEDDING CARD</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<style>
+/* element that contains the map. */
+#map {
+  height: 100%;
+}
+.mySlides {display:none;
+    max-width: 100%;}    
+body,h1,h2{font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+p {line-height: 2}
+.bgimg, .bgimg2 {
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+    max-width: 100%;
+}
 .bgimg {background-image: url("../images/1.jpg")}
 .bgimg2 {background-image: url("../images/8.jpg")}
-    </style>
+</style>
     <script>
       // This example requires the Places library. Include the libraries=places
       // parameter when you first load the API. For example:
@@ -59,28 +53,11 @@
           }
         });
       }
-</script>
- 
-
-  </head>
-  <body>
-     <script>
-      var myIndex = 0;
-      carousel();
-    function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";  
-    }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}    
-    x[myIndex-1].style.display = "block";  
-    setTimeout(carousel, 2000); // Change image every 2 seconds
-}
 </script>  
-  <!-- Header / Home-->
+</head>
+<body>
 
+<!-- Header / Home-->
 <header class="w3-display-container w3-wide bgimg w3-grayscale-min" id="home">
   <div class="w3-display-middle w3-text-white w3-center">
     <h1 class="w3-jumbo">Tanu & Sarthak</h1>
@@ -99,23 +76,36 @@
   </div>
 </div>
 
+<!-- About / Jane And John
+<div class="w3-container w3-padding-64 w3-pale-red w3-grayscale-min" id="us">
+  <div class="w3-content">
+    <h1 class="w3-center w3-text-grey"><b>Tanu & Sarthak</b></h1>
+    <img class="w3-round w3-grayscale-min" src="../images/ANK.jpg" style="width:100%;margin:32px 0">
+    <p><i>You all know us. And we all know you. We are getting married .</i>
+    </p><br>
+    <p class="w3-center"><a href="#wedding" class="w3-button w3-black w3-round w3-padding-large w3-large">Wedding Details</a></p>
+  </div>
+</div>
+ -->
 <h2 class="w3-center">Moments</h2>
 <div class="w3-content w3-section" style="max-width:500px">
   <img class="mySlides" src="../images/1.jpg" style="width:100%">
   <img class="mySlides" src="../images/2.jpg" style="width:100%">
-  <img class="mySlides" src="../images/ANK.jpg" style="width:100%">
+  
   <img class="mySlides" src="../images/4.jpg" style="width:100%">
     <img class="mySlides" src="../images/7.jpg" style="width:100%">
     <img class="mySlides" src="../images/8.jpg" style="width:100%">
 </div>
-   
+
+<!-- Background photo -->
 <div class="w3-display-container bgimg2">
   <div class="w3-display-middle w3-text-white w3-center">
     <h1 class="w3-jumbo">You Are Invited</h1><br>
     <h2>Of course..</h2>
   </div>
 </div>
-    
+
+<!-- Wedding information -->
 <div class="w3-container w3-padding-64 w3-pale-red w3-grayscale-min w3-center" id="wedding">
   <div class="w3-content">
     <h1 class="w3-text-grey"><b>THE WEDDING</b></h1>
@@ -128,14 +118,18 @@
       </div>
       <div class="w3-half">
         <h2>Where</h2>
-        <p>Some place, an address</p>
-        <p>Some where, some address</p>
+        <div class="w3-half">
+         <div id="map"  style="width:300px;height:100px;background:yellow"></div>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBftxNrNWPY3wT4qMhpuJVy_OhJodQIC7g&libraries=places&callback=initMap">
+    </script>
+      </div>
       </div>
     </div>
   </div>
 </div>
 
- <!-- RSVP section -->
+<!-- RSVP section -->
 <div class="w3-container w3-padding-64 w3-pale-red w3-center w3-wide" id="rsvp">
   <h1>HOPE YOU CAN MAKE IT!</h1>
   <p class="w3-large">Kindly Respond By January, 2017</p>
@@ -165,17 +159,33 @@
     </div>
   </div>
 </div>
-   
- 
-    <div id="map" style="height:400px;background:yellow"></div>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBftxNrNWPY3wT4qMhpuJVy_OhJodQIC7g&libraries=places&callback=initMap">
-    </script>
-  <!-- Footer -->
+
+
+
+<!-- Footer -->
 <footer class="w3-center w3-black w3-padding-16">
   <p>With Love From Varshney Family</p>
 
 </footer>
-<div class="w3-hide-small" style="margin-bottom:32px">  </div>  
-  </body>
+<div class="w3-hide-small" style="margin-bottom:32px">  </div>
+    
+<script>
+var myIndex = 0;
+carousel();
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>   
+
+ 
+
+</body>
 </html>
