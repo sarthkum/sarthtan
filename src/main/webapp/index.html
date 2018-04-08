@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="icon" href="../images/favicon.ico">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="1040690509140-k54vrc1u89rnud86mjbt3842dpdn68bu.apps.googleusercontent.com">
 <style>
 /* element that contains the map. */
 #map {
@@ -64,6 +66,34 @@ img {margin-bottom: -7px}
           }
         });
       }
+        function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  var username = profile.getEmail();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail());
+  
+  document.location.href="/ConnectionManager?email="+username;
+   // This is null if the 'email' scope is not present.
+}
+    function google_sign_callback(authResult){
+        if(authResult['g-oauth-window']){
+        }else if(authResult['error']) {
+        }
+    }
+    
+      function signOut() {
+          
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+          window.alert(auth2);
+        });
+      }
+      window.onbeforeunload = function(e){
+    	  gapi.auth2.getAuthInstance().signOut();
+    	};
 </script>  
 </head>
 <body>
@@ -187,6 +217,10 @@ img {margin-bottom: -7px}
 <div id="id01" class="w3-modal">
   <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="padding:32px;max-width:600px">
     <div class="w3-container w3-white w3-center">
+                                      <p class="login button"> 
+                                    <input type="submit" value="Login" />
+                                   <div class="g-signin2" data-onsuccess="onSignIn"></div>  
+                                        </p>
       <h1 class="w3-wide">CAN YOU COME?</h1>
       <p>We really hope you can make it.</p>
       <form>
