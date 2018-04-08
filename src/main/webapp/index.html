@@ -97,6 +97,14 @@ img {margin-bottom: -7px}
 </script>  
 </head>
 <body>
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.12';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 
 <!-- Header / Home-->
 <header class="w3-display-container w3-wide bgimg w3-grayscale-min" id="home">
@@ -210,6 +218,11 @@ img {margin-bottom: -7px}
 <!-- RSVP section -->
 <div class="w3-container w3-padding-64 w3-pale-red w3-center w3-wide" id="rsvp">
   
+  <div id="fb-root"></div>
+
+  
+  <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>
+  
   <script src="https://apis.google.com/js/plusone.js"></script>
 <div id="comments"></div>
 <script>
@@ -222,6 +235,11 @@ gapi.comments.render('comments', {
 </script>
   
   <p>Translate this page:</p>
+  
+   <div id="fb-root"></div>
+
+  
+  <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>
 
 <div id="google_translate_element"></div>
 
