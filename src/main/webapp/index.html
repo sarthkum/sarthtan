@@ -37,6 +37,21 @@ img {margin-bottom: -7px}
 .button:hover {
   text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #00ffff , 0 0 70px #00ffff , 0 0 80px #00ffff , 0 0 100px #00ffff ;
 }
+  .video-container {
+	position:relative;
+	padding-bottom:56.25%;
+	padding-top:30px;
+	height:0;
+	overflow:hidden;
+}
+
+.video-container iframe, .video-container object, .video-container embed {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
 </style>
     <script>
       // This example requires the Places library. Include the libraries=places
@@ -249,9 +264,11 @@ gapi.comments.render('comments', {
 <p>You can translate the content of this page by selecting a language in the select box.</p>
 
   <p class="w3-large">Hamare Chacha Chachi Ki Shadi mein jaroor jaroor aana Ridhima , Aayansh</p>
+  <div class="video-container">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/live_stream?channel=UC7dD1bOWXiJH3lJLsTInxOQ" 
 frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
 </iframe>
+  </div>
   <h1>HOPE YOU CAN MAKE IT!</h1>
   <p class="w3-large">Kindly Respond By April, 2018</p>
   
